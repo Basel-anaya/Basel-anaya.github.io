@@ -64,14 +64,22 @@
 								<ul class="actions special">
 									<li><a href="#" class="button large">Full Story</a></li>
 								</ul>
-								<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for stories,repositories..">
-
-                                                                        <ul id="myUL">
-                                                                          <li><a href="https://medium.com/@baselanaya/best-books-for-learning-artificial-intelligence-2f35847524a7">Best Books For Learning Artificial Intelligence</a></li>
-                                                                          <li><a href="https://github.com/Basel-anaya/Roadmap-to-AI">Roadmap to Artificial Intelligence</a></li>
-
-                                                                          <li><a href="https://github.com/Basel-anaya/AI-Courses">Artificial Intelligence Courses</a></li>
-                                                                        </ul>
+								<div class="wrapper">
+    <div class="search_box">
+        <div class="dropdown">
+            <div class="default_option">All</div>  
+            <ul>
+              <li>Articles</li>
+              <li>Repositories</li>
+              <li>Projects</li>
+            </ul>
+        </div>
+        <div class="search_field">
+          <input type="text" class="input" placeholder="Search">
+          <i class="fas fa-search"></i>
+      </div>
+    </div>
+</div>
 							</article>
 
 						<!-- Posts -->
@@ -182,27 +190,22 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 		        <script src="assets/js/main.js"></script>
-		<script>
-function myFunction() {
-  // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.getElementsByTagName('li');
+			<link rel="stylesheet" href="styles.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".default_option").click(function(){
+			  $(".dropdown ul").addClass("active");
+			});
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-</script>
+			$(".dropdown ul li").click(function(){
+			  var text = $(this).text();
+			  $(".default_option").text(text);
+			  $(".dropdown ul").removeClass("active");
+			});
+		});
+	</script>
 <!-- CSS -->
 #myInput {
   background-image: url(images/search.png); /* Add a search icon to input */
